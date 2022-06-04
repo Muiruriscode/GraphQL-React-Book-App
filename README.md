@@ -1,17 +1,23 @@
 # GraphQl React App
 
 ## GrapqQL Apollo-client
-used apollo client to query data from graphql node-express server. 
 
-## About 
+used apollo client to query data from graphql node-express server.
+
+## About
+
 The app gets data about books, author and genre, then it acceps user request
+
+![App Design](https://github.com/Muiruriscode/GraphQL-React-Book-App/blob/main/public/web-image.png)
 
 ### Request types
 
 ##### Get list of books
+
 gets all the books that are available in the database.
 
 #### Get Book details
+
 Gets all the book details for the book including genre the author and other books by the author
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
