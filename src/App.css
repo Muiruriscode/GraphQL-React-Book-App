@@ -1,12 +1,93 @@
-.App {
+:root {
+  --primary: rgb(250, 74, 74);
+  --primary-1: rgb(250, 106, 106);
+  --primary-2: rgb(110, 1, 1);
+  --ligt-grey: #eee;
+}
+body {
+  background-image: linear-gradient(100deg, var(--primary), var(--primary-1));
+}
+ol {
+  margin-top: 0;
+}
+li {
+  padding: 0;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.bookList {
+  width: 50vh;
+  background-color: var(--ligt-grey);
+  padding: 0 2rem 1rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+.bookDetails {
+  width: 50vh;
+  padding: 0 2rem 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--ligt-grey);
+  margin: 1rem;
+}
+.header {
+  border-bottom: var(--primary-2) solid 1px;
+  margin-bottom: 1rem;
+}
+.heading {
   text-align: center;
+  padding: 0.3rem 0;
+  margin-top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #eee;
+}
+.formElement {
+  margin-left: 0.2rem;
+  width: 100%;
+}
+#detailsForm {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: var(--ligt-grey);
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+#detailsForm button {
+  background-color: var(--primary);
+  border: none;
+  border-radius: 2px;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media screen and (max-width: 900px) {
+  .container {
+    justify-content: center;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  .bookList {
+    width: 100%;
+  }
+  .bookDetails {
+    width: 100%;
+  }
+  #detailsForm {
+    position: relative;
+    left: 0;
+    margin: 1rem;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
