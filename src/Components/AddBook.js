@@ -3,6 +3,11 @@ import { useState } from "react";
 import { addAuthor, bookMutation } from "../Queries";
 import ErrorComponent from "./Error";
 import Loading from "./Loading";
+import { getBooks } from "../Queries";
+
+const getBooksQuery = gql`
+  ${getBooks}
+`;
 
 const addAuthorQuery = gql`
   ${addAuthor}
@@ -55,7 +60,11 @@ const AddBook = () => {
     e.preventDefault();
     console.log("name" + name, "ath" + authorId, "\n" + genre);
 
-    addBook({ variables: { name, genre, authorId } });
+    addBook({
+      variables: { name, genre, authorId },
+
+      refetchQueries: [getBooksQuery],
+    });
   };
 
   return (
