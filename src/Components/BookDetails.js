@@ -1,29 +1,39 @@
-import { gql, useQuery } from "@apollo/client";
-import { getBookDetails } from "../Queries";
-import ErrorComponent from "./Error";
-import Loading from "./Loading";
+import { gql, useQuery } from '@apollo/client'
+import { getBookDetails } from '../Queries'
+import ErrorComponent from './Error'
+import Loading from './Loading'
 
 const getBookDetailsQuery = gql`
   ${getBookDetails}
-`;
+`
 
 const BookDetails = ({ id }) => {
   const { error, loading, data } = useQuery(getBookDetailsQuery, {
     variables: { id },
-  });
+  })
 
   if (loading) {
-    return <Loading info={"book details"} />;
+    return (
+      <div>
+        <h2 className='header'>Book Details</h2>
+        <Loading info={'book details'} />
+      </div>
+    )
   }
 
   if (error) {
-    return <ErrorComponent error={error} />;
+    return (
+      <div>
+        <h2 className='header'>Book Details</h2>
+        <ErrorComponent error={error} />
+      </div>
+    )
   }
 
-  const { Book } = data;
+  const { Book } = data
   return (
     <div>
-      <h2 className="header">Book Details</h2>
+      <h2 className='header'>Book Details</h2>
       {Book && (
         <div>
           <h3>
@@ -46,7 +56,7 @@ const BookDetails = ({ id }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default BookDetails;
+export default BookDetails

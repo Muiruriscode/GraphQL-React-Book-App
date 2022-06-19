@@ -1,24 +1,144 @@
 # GraphQl React App
 
-## GrapqQL Apollo-client
+The app gets data about books, author and genre. The app uses GraphQL to access data from the database. Once data is available Apollo-client the use of GraphQL in react apps.
 
-used apollo client to query data from graphql node-express server.
+## Frameworks and technologies
 
-## About
+- React
+- Apollo Client
+- GraphQL
 
-The app gets data about books, author and genre, then it acceps user request
+## Feature
+
+- [] Get access to all the books in the database.
+- [] Get Book details
+- [] Add an Author
+- [] Add a book to the database.
 
 ![App Design](https://github.com/Muiruriscode/GraphQL-React-Book-App/blob/main/public/web-image.png)
 
-### Request types
+## GraphQl
 
-##### Get list of books
+### Installation
 
-gets all the books that are available in the database.
+```bash
+npm install @apollo/client graphql
+```
 
-#### Get Book details
+### Import dependencies
+
+```js
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from '@apollo/client'
+```
+
+### Initialize queries
+
+```js
+1
+const client = new ApolloClient({
+  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  cache: new InMemoryCache(),
+})
+```
+
+## Queries
+
+GraphQl uses the following queries to access data from the server.The gql library enables graphQL queries.
+
+To access the data use Apollo client's useQuery hook and gql to input your query
+
+```js
+import { getBooks } from '../Queries'
+const getBooksQuery = gql`
+  ${getBooks}
+`
+```
+
+To add data to the database use the use mutation hook from apollo client
+
+```js
+import { bookMutation } from '../Queries'
+const [addBook, { data: mData, loading: mLoading, error: mError }] =
+  useMutation(addBookMutation)
+
+addBook({
+  variables: { name, genre, authorId },
+
+  refetchQueries: [getBooksQuery],
+})
+```
+
+### Get list of books
+
+Gets all the books that are available in the database.
+
+```js
+
+query {
+  Books {
+    name
+    genre
+    id
+  }
+}
+
+```
+
+### Get Book details
 
 Gets all the book details for the book including genre the author and other books by the author
+
+```js
+
+query ($id: ID) {
+  Book(id: $id) {
+    name
+    genre
+    id
+    author {
+      id
+      name
+    books{
+    id
+    name
+      }
+    }
+  }
+}
+
+```
+
+### Add A book to the database
+
+```js
+
+mutation ($name: String!, $genre: String!, $authorId: ID!) {
+  addBook(name: $name, genre: $genre, authorId: $authorId) {
+    name
+  }
+}
+
+```
+
+### Get all the authors
+
+```js
+
+query {
+  Authors {
+    id
+    name
+    age
+  }
+}
+
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -88,3 +208,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+
+```
+
+```
+
+```
