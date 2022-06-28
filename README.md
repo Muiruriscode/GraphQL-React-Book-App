@@ -10,10 +10,12 @@ The app gets data about books, author and genre. The app uses GraphQL to access 
 
 ## Feature
 
-- [] Get access to all the books in the database.
-- [] Get Book details
-- [] Add an Author
-- [] Add a book to the database.
+- Get access to all the books in the database.
+- Get Book details
+- Add an Author
+- Add a book to the database.
+
+## Book App 
 
 ![App Design](https://github.com/Muiruriscode/GraphQL-React-Book-App/blob/main/public/web-image.png)
 
